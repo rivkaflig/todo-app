@@ -1,10 +1,12 @@
-function TodoItem({ text, removeTask }) {
+// Task and remove button
+function TodoItem({ text, onRemove }) {
     return (
-        <li className="task-item">
+        <li className='task-item'>
             <span>{text}</span>
-                <button className="remove-button" onClick={() => removeTask(task)}>
-                    Remove
-                </button>
+            {/* Calls remove task function */}
+            <button className='remove-button' onClick={(onRemove)}>
+                Remove
+            </button>
         </li>
     );
 }
