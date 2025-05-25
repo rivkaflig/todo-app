@@ -4,48 +4,63 @@ import '../styles/ToDoList.css';
 import TodoItem from './TodoItem';
 
 function TodoApp() {
+    // State to store list
     const [tasks, setTasks] = useState([]);
-    const [taskInput, setTaskInput] = useState('');
+
+    // State to store the input
+    const [taskInput, input] = useState('');
   
+    // Add tasks
     const addTask = (e) => {
         e.preventDefault();
-        if (taskInput.trim() === '') return; // Prevent blank tasks
+        
+        // If blank don't add
+        if (taskInput.trim() === '') return;
+
+        // Add to list
         setTasks([...tasks, taskInput]);
-        setTaskInput('');
+
+        // Clear input bar
+        input('');
     };
 
-    const removeTask = (removing) => {
-        setTasks(tasks.filter(task => task !== removing));
+    // Remove task from array
+    const removeTask = (taskToRemove) => {
+        setTasks(tasks.filter(task => task !== taskToRemove));
     };
 
+    // Page HTML
     return (
         <div className='container'>
             <div className='todo'>
                 <h1>To-Do List</h1>
             </div>
         
+              {/* Form to input tasks */}
             <form className='form' onSubmit={addTask}>
                 <input
                     type='text'
                     className='input-field'
                     value={taskInput}
-                    onChange={(e) => setTaskInput(e.target.value)}
+                    onChange={(e) => input(e.target.value)}
                     placeholder='Enter a new task'
                     />
                 <button type='submit' className='add-button'>Add Task</button>
             </form>
 
-        <ul className="task-list">
+            {/* Display if no tasks */}
             {tasks.length === 0 ? (
-                <li>Nothing To Do!</li>
+                <p>Nothing To Do!</p>
             ) : (
-                tasks.map((task, index) => (
-                    <TodoItem key={index} task={task} removeTask={removeTask} />
-                ))
+                // Render tasks usins todoItem component
+                <ul className="task-list">
+                    {tasks.map((task, index) => (
+                        <TodoItem key={index} text={task} onRemove={() => removeTask(task)} />
+                    ))}
+                </ul>
             )}
-        </ul>
-    </div>
-  );
+        </div>
+    );
 }
 
 export default TodoApp;
