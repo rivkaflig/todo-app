@@ -35,17 +35,17 @@ function TodoApp() {
                 <button type='submit' className='add-button'>Add Task</button>
             </form>
 
-        <ul className="task-list">
             {tasks.length === 0 ? (
-                <li>Nothing To Do!</li>
+                <p>Nothing To Do!</p>
             ) : (
-                tasks.map((task, index) => (
-                    <TodoItem key={index} task={task} removeTask={removeTask} />
-                ))
+                <ul className="task-list">
+                    {tasks.map((task, index) => (
+                        <TodoItem key={index} text={task} onRemove={() => handleRemove(index)} />
+                    ))}
+                </ul>
             )}
-        </ul>
-    </div>
-  );
+        </div>
+    );
 }
 
 export default TodoApp;
