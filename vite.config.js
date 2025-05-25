@@ -1,4 +1,4 @@
 export default defineConfig({
-  base: "/todo-app/", // Use your repo name here
+  base: "/todo-app/", 
   plugins: [react()],
 });
