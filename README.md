@@ -1,5 +1,11 @@
 # React + Vite
 
+# Rivka Chana Flig
+# Web Programming
+# React and Vite Todo List
+
+This is a To-Do List app built with React using Vite. It allows users to add and remove tasks from a list. The app use React concepts and consists of two components: TodoApp for managing state and task logic, and TodoItem for displaying individual tasks.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
